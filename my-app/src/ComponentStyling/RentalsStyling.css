@@ -1,0 +1,94 @@
+.page {
+    display: flex;
+    border: solid black 2px;
+    width: 1199px;    
+}
+
+.rental-summary{
+    display: flex;
+    position: relative;
+    border: 2px solid black;
+    right: 380px;
+    top: 35px       
+}
+
+.add-month-button {
+    height: 25px
+
+}
+
+.add-month-button {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  position: relative;
+  right:210px;
+  bottom:19px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.add-month-button:hover,
+.add-month-button:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.add-month-button:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.add-month-button:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+.form-submit{
+    border:solid black 2px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 80px;
+    left: 55px;
+    width: 425px;
+    padding: 5px;
+}
+
+.inputname {
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 5px;
+    
+}
+
+.inputlabel {
+    border: blue solid 2px;
+}
+
+.inputbar {
+    width: 125px;
+}
+
+.inputbarvalue {
+    width:50px
+}
+
+

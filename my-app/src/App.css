@@ -1,0 +1,50 @@
+
+
+.page {
+  width: 1200px;
+  background-color: antiquewhite; 
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+.image-container {
+  position: relative;
+  width: 425px; 
+}
+
+.image-container h1 {
+  position: absolute;
+  top: -6.2%;
+  left: 0;
+  width: 140%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2px;
+  box-sizing: border-box;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top: solid transparent 1px;
+}
+
+.image-container img {
+  width: 139.5%;
+  height: auto;
+  border: 2px solid black; /* adjust as needed */
+  border-radius: 10px; /* adjust as needed */
+}
+
+.all-property {
+  display: flex;
+  flex-direction: column;  
+  width: 600px;
+  margin: 0 auto;
+}
