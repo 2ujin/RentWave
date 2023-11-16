@@ -11,7 +11,6 @@ async function AddpropertyAllowableExpense(expense: any) {
       body: JSON.stringify(expense),
     });
     const response = await data.json();
-    console.log(response);
 
     if (data.ok) {
       return { status: 201, data: response };
