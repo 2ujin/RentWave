@@ -1,0 +1,62 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL") // Your MongoDB connection URL
+}
+
+// PropertyListing Schema
+model PropertyListing {
+  ID           String @id @default(auto()) @map("_id") @db.ObjectId
+  PropertyName String
+}
+
+// RentalIncome Schema
+model RentalIncome {
+  ID          String @id @default(auto()) @map("_id") @db.ObjectId
+  StartPeriod String
+  EndPeriod   String
+  Rental      String
+  PropertyID  String
+}
+
+// InterestExpense Schema
+model InterestExpense {
+  ID              String @id @default(auto()) @map("_id") @db.ObjectId
+  StartPeriod     String
+  EndPeriod       String
+  InterestExpense String
+  PropertyID      String
+}
+
+// CapitalRepayments Schema
+model CapitalRepayments {
+  ID            String @id @default(auto()) @map("_id") @db.ObjectId
+  StartPeriod   String
+  EndPeriod     String
+  CapitalRepaid String
+  PropertyID    String
+}
+
+// DisallowableExpenses Schema
+model DisallowableExpenses {
+  ID           String @id @default(auto()) @map("_id") @db.ObjectId
+  Description  String
+  Amount       String
+  PropertyID   String
+  DateIncurred String
+}
+
+// AllowableExpenses Schema
+model AllowableExpenses {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  Description  String
+  Amount       String
+  PropertyID   String
+  DateIncurred String
+}
