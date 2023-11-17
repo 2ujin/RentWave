@@ -4,6 +4,7 @@ import {
   GetMonthlyAllowableExpenses,
   AddpropertyAllowableExpense,
 } from "../ApiServices/AddExpenses";
+import "../ComponentStyling/RentalsStyling.css";
 
 function AllowableExpenses({
   itemId,
@@ -76,8 +77,8 @@ function AllowableExpenses({
   };
 
   return (
-    <div>
-      <h1>allowableExpenses</h1>
+    <div style={{ marginTop: "50px" }}>
+      {/* <h1>allowableExpenses</h1> */}
       {showAllowableExpenses.map((expense: any) => {
         if (expense.PeriodId === itemId) {
           return (
@@ -92,39 +93,52 @@ function AllowableExpenses({
         }
       })}
 
-      <button onClick={() => setShowForm(!showForm)}>
+      <button
+        style={{ width: "100%" }}
+        className="btn"
+        onClick={() => setShowForm(!showForm)}
+      >
         Add Allowable Expense
       </button>
       {showForm && (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Description:
+        <form className="form-submit" onSubmit={handleSubmit}>
+          <div className="inputname">
+            <label className="inputlabel">Description:</label>
             <input
+              className="inputbarvalue"
               type="text"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-          </label>
-          <label>
-            Amount:
+          </div>
+          <div className="inputname">
+            <label className="inputlabel">Amount:</label>
             <input
+              className="inputbarvalue"
               type="number"
               name="amount"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
-          </label>
-          <label>
-            Date Incurred:
+          </div>
+
+          <div className="inputname">
+            <label className="inputlabel">Date Incurred:</label>
             <input
+              className="inputbar"
               type="date"
               name="dateIncurred"
               value={dateIncurred}
               onChange={(e) => setDateIncurred(e.target.value)}
             />
-          </label>
-          <input type="submit" value="Submit" />
+          </div>
+          <input
+            className="btn"
+            type="submit"
+            value="Submit"
+            style={{ width: "100%", marginTop: "20px" }}
+          />
         </form>
       )}
     </div>
