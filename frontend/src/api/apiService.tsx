@@ -99,7 +99,7 @@ async function AddNewProperty(property: any) {
 async function AddpropertyRents(rentalBreakdown: any) {
   try {
     const ID = rentalBreakdown.PropertyID;
-    const data = await fetch(`${URL}/summary/${ID}/RecordRents`, {
+    const data = await fetch(`${url}/summary/${ID}/RecordRents`, {
       method: "POST",
       headers: {
         "Content-Type": "application/JSON",
@@ -121,7 +121,7 @@ async function AddpropertyRents(rentalBreakdown: any) {
 async function MonthlyInterest(interest: any) {
   try {
     const ID = interest.PropertyID;
-    const data = await fetch(`${URL}/summary/${ID}/RecordInterestExpense`, {
+    const data = await fetch(`${url}/summary/${ID}/RecordInterestExpense`, {
       method: "POST",
       headers: {
         "Content-Type": "application/JSON",
@@ -143,7 +143,7 @@ async function MonthlyInterest(interest: any) {
 async function MonthlyCapital(CapitalRepayment: any) {
   try {
     const ID = CapitalRepayment.PropertyID;
-    const data = await fetch(`${URL}/summary/${ID}/RecordCapitalRepayment`, {
+    const data = await fetch(`${url}/summary/${ID}/RecordCapitalRepayment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/JSON",
@@ -166,7 +166,7 @@ async function MonthlyCapital(CapitalRepayment: any) {
 
 async function GetMonthlyRents(id: any) {
   try {
-    const response = await fetch(`${URL}/summary/${id}/GetMonthlyRents`);
+    const response = await fetch(`${url}/summary/${id}/GetMonthlyRents`);
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -176,7 +176,7 @@ async function GetMonthlyRents(id: any) {
 async function GetMonthlyCapitalRepayments(id: any) {
   try {
     const response = await fetch(
-      `${URL}/summary/${id}/GetMonthlyCapitalRepayments`
+      `${url}/summary/${id}/GetMonthlyCapitalRepayments`
     );
     return await response.json();
   } catch (error) {
@@ -187,7 +187,7 @@ async function GetMonthlyCapitalRepayments(id: any) {
 async function GetMonthlyInterestExpense(id: any) {
   try {
     const response = await fetch(
-      `${URL}/summary/${id}/GetMonthlyInterestExpense`
+      `${url}/summary/${id}/GetMonthlyInterestExpense`
     );
     return await response.json();
   } catch (error) {
