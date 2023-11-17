@@ -7,6 +7,5 @@ services:
     command: --replSet rs0 # <--- this startup command enables the replicaset.
     ports:
       - "27017:27017"
-      - "28017:28017"
     volumes:
       - ./data/mongo:/data/db
