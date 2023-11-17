@@ -1,6 +1,8 @@
-import React from "react";
+import moment from "moment";
 import AllowableExpenses from "./AllowableExpenses";
 import DisallowableExpenses from "./DisallowableExpenses";
+import calendar from "../images/calendar.png";
+import rental from "../images/rental.png";
 
 function Monthly({
   showAllowableExpenses,
@@ -51,18 +53,18 @@ function Monthly({
   showRentalIncome = [
     {
       id: 1,
-      StartPeriod: "212312",
-      EndPeriod: "212312",
-      Rental: "212312",
+      StartPeriod: "2023-11-12",
+      EndPeriod: "2023-11-18",
+      Rental: "2023-11-17",
     },
   ];
 
   showAllowableExpenses = [
     {
       id: 1,
-      StartPeriod: "212312",
-      EndPeriod: "212312",
-      Rental: "212312",
+      StartPeriod: "2023-11-12",
+      EndPeriod: "2023-11-18",
+      Rental: "2023-11-17",
     },
   ];
 
@@ -72,22 +74,30 @@ function Monthly({
 
   return (
     <div>
-      <div>
+      <div className="summary-wrapper">
         <h3>Total rental income: {totalRental}</h3>
-        <h3>Allowable expense {totalAllowableExpenses}</h3>
-        <h3>Disallowable expenses {totalDisallowableExpenses} </h3>
-        <h3>Loan interest {totalInterestExpense}</h3>
-        <h3>Capital repayment {totalCapitalRepayment}</h3>
-        <h3>Net Income {netIncome}</h3>
+        <h3>Allowable expense: {totalAllowableExpenses}</h3>
+        <h3>Disallowable expenses: {totalDisallowableExpenses} </h3>
+        <h3>Loan interest: {totalInterestExpense}</h3>
+        <h3>Capital repayment: {totalCapitalRepayment}</h3>
+        <h3>Net Income: {netIncome}</h3>
       </div>
 
       {showRentalIncome.map((item: any) => {
         return (
           <div key={item.id}>
-            <h1>start date {item.StartPeriod}</h1>
-            <h1>end date {item.EndPeriod}</h1>
-            <h1>Rental Received {item.Rental}</h1>
-            <h1>
+            <div className="rental-income">
+              <img src={calendar} />
+              <h1 className="date">
+                Date | {moment(item.StartPeriod).format("DD-MM-YYYY")} ~{" "}
+                {moment(item.EndPeriod).format("DD-MM-YYYY")}
+              </h1>
+            </div>
+            <div className="rental-income">
+              <img src={rental} />
+              <h1 className="date">Rental Received | {item.Rental}</h1>
+            </div>
+            {/* <h1>
               Interest expense Breakdown{" "}
               {showInterestExpense.map((interest: any) => {
                 if (item.StartPeriod === interest.StartPeriod) {
@@ -101,9 +111,9 @@ function Monthly({
                 }
                 return null;
               })}
-            </h1>
+            </h1> */}
 
-            <h1>
+            {/* <h1>
               Capital Repayment{" "}
               {showCapitalRepayment.map((repayment: any) => {
                 if (item.StartPeriod === repayment.StartPeriod) {
@@ -117,7 +127,7 @@ function Monthly({
                 }
                 return null;
               })}
-            </h1>
+            </h1> */}
 
             <AllowableExpenses
               itemId={item.id}

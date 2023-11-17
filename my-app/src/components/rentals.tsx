@@ -10,6 +10,7 @@ import {
   GetMonthlyInterestExpense,
   GetMonthlyCapitalRepayments,
 } from "../ApiServices/rental";
+const houseImage = require("../images/3d-electric-car-building.jpg");
 
 function Rentals({ propertyId }: any) {
   const [showForm, setShowForm] = useState(false);
@@ -33,6 +34,7 @@ function Rentals({ propertyId }: any) {
       ...formValues,
       [event.target.name]: event.target.value,
     });
+    setShowForm(false);
   };
 
   function reverseDate(date: any) {
@@ -125,15 +127,17 @@ function Rentals({ propertyId }: any) {
   }
 
   return (
-    <div>
-      <div className="page">
-        <div className="rental-summary">
-          <h1>Rental Summary</h1>
+    <div className="rental-summary">
+      <img className="rental-house" src={houseImage} />
+      <div className="rental-wrapper">
+        <div className="title-wrapper">
+          <h1 className="title">Rental Summary</h1>
+          {!showForm && (
+            <div className="btn" onClick={() => setShowForm(true)}>
+              + Add Month
+            </div>
+          )}
         </div>
-
-        <button className="add-month-button" onClick={() => setShowForm(true)}>
-          Add Month
-        </button>
 
         {showForm && (
           <form className="form-submit" onSubmit={handleSubmit}>
@@ -173,6 +177,7 @@ function Rentals({ propertyId }: any) {
             <div className="inputname">
               <label className="inputlabel">Loan Interest: </label>
               <input
+                className="inputbarvalue"
                 type="number"
                 name="loanInterest"
                 value={formValues.loanInterest}
@@ -183,6 +188,7 @@ function Rentals({ propertyId }: any) {
             <div className="inputname">
               <label className="inputlabel">Capital Repayment: </label>
               <input
+                className="inputbarvalue"
                 type="number"
                 name="capitalRepayment"
                 value={formValues.capitalRepayment}
@@ -190,24 +196,27 @@ function Rentals({ propertyId }: any) {
               />
             </div>
 
-            <input type="submit" value="Submit" />
+            <input
+              type="submit"
+              value="Submit"
+              className="btn"
+              style={{ width: "100%", marginTop: "15px" }}
+            />
           </form>
         )}
 
-        <div>
-          <Monthly
-            showAllowableExpenses={showAllowableExpenses}
-            SetAllowableExpenses={SetAllowableExpenses}
-            showDisallowableExpenses={showDisallowableExpenses}
-            SetDisallowableExpenses={SetDisallowableExpenses}
-            showRentalIncome={showRentalIncome}
-            SetRentalIncome={SetRentalIncome}
-            showInterestExpense={showInterestExpense}
-            SetRentalExpense={SetRentalExpense}
-            showCapitalRepayment={showCapitalRepayment}
-            SetCapitalRepayment={SetCapitalRepayment}
-          />
-        </div>
+        <Monthly
+          showAllowableExpenses={showAllowableExpenses}
+          SetAllowableExpenses={SetAllowableExpenses}
+          showDisallowableExpenses={showDisallowableExpenses}
+          SetDisallowableExpenses={SetDisallowableExpenses}
+          showRentalIncome={showRentalIncome}
+          SetRentalIncome={SetRentalIncome}
+          showInterestExpense={showInterestExpense}
+          SetRentalExpense={SetRentalExpense}
+          showCapitalRepayment={showCapitalRepayment}
+          SetCapitalRepayment={SetCapitalRepayment}
+        />
       </div>
     </div>
   );

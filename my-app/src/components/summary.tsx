@@ -3,11 +3,12 @@ import Rentals from "./Rentals";
 import { useParams } from "react-router-dom";
 import "../ComponentStyling/summaryStyling.css";
 import { GetPropertysummary } from "../ApiServices/propertylanding";
+import Header from "./Header";
 
 function Summary() {
   const [propertysummary, setpropertysummary] = useState([]);
-
   const params = useParams();
+  let id: any = "";
 
   async function fetchPropertySummary(id: any) {
     const property = await GetPropertysummary(id);
@@ -15,18 +16,15 @@ function Summary() {
   }
 
   useEffect(() => {
-    const id = params.id;
+    id = params.id;
     fetchPropertySummary(id);
   }, [params.id]);
 
   return (
-    <div>
-      <div className="summary">{<h1>Summary for {1}</h1>}</div>
-
-      <div>
-        <Rentals propertyId={2} />
-      </div>
-    </div>
+    <>
+      <Header />
+      <Rentals propertyId={id} />
+    </>
   );
 }
 

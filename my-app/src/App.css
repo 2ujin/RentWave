@@ -1,8 +1,11 @@
 * {
   margin: 0;
-  background-color: #F1F2F8;
   box-sizing: border-box;
   font-family: 'Lexend';
+}
+
+body {
+  background-color: #F1F2F8;
 }
 
 .page {
