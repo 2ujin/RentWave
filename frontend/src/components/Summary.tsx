@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Rentals from "./Rentals";
 import { useParams } from "react-router-dom";
-import "../ComponentStyling/summaryStyling.css";
-import { GetPropertysummary } from "../ApiServices/propertylanding";
+import { GetPropertysummary } from "../api/apiService";
+import "../styles/summaryStyling.css";
 import Header from "./Header";
+import Rentals from "./Rentals";
 
 function Summary() {
   const [propertysummary, setpropertysummary] = useState([]);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import "../ComponentStyling/summaryStyling.css";
-import logo from "../images/logo.png";
+import "../styles/summaryStyling.css";
+import logo from "../assets/logo.png";
 
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -18,7 +18,9 @@ const HeaderWrapper = styled.div`
 function Header() {
   return (
     <HeaderWrapper>
-      <img src={logo} />
+      <Link to={"/"}>
+        <img src={logo} />
+      </Link>
     </HeaderWrapper>
   );
 }

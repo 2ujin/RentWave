@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PropertyList from "../components/Propertylist";
-import Summary from "../components/summary";
+import Summary from "../components/Summary";
 
 const RoutesComponent = () => {
   const token = localStorage.getItem("token");

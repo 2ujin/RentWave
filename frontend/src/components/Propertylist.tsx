@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { GetProperties, AddNewProperty } from "../ApiServices/homepage";
 import Header from "./Header";
 import "../App.css";
-const houseImage = require("../images/3d-electric-car-building.jpg");
+import { GetProperties, AddNewProperty } from "../api/apiService";
+const houseImage = require("../assets/3d-electric-car-building.jpg");
 
 function PropertyList() {
   const [propertyOwned, setPropertyOwned] = useState<any>([]);

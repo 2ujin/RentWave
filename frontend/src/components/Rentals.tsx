@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Monthly from "./Monthly";
-import "../ComponentStyling/RentalsStyling.css";
+import "../styles/RentalsStyling.css";
 import { useParams } from "react-router-dom";
 import {
   AddpropertyRents,
@@ -9,8 +9,8 @@ import {
   GetMonthlyRents,
   GetMonthlyInterestExpense,
   GetMonthlyCapitalRepayments,
-} from "../ApiServices/rental";
-const houseImage = require("../images/3d-electric-car-building.jpg");
+} from "../api/apiService";
+const houseImage = require("../assets/3d-electric-car-building.jpg");
 
 function Rentals({ propertyId }: any) {
   const [showForm, setShowForm] = useState(false);
@@ -34,7 +34,6 @@ function Rentals({ propertyId }: any) {
       ...formValues,
       [event.target.name]: event.target.value,
     });
-    setShowForm(false);
   };
 
   function reverseDate(date: any) {

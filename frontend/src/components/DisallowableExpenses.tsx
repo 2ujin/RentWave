@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
-  GetMonthlyAllowableExpenses,
-  AddpropertyAllowableExpense,
-} from "../ApiServices/AddExpenses";
-import "../ComponentStyling/RentalsStyling.css";
+  GetMonthlyDisallowableExpenses,
+  AddpropertyDisAllowableExpense,
+} from "../api/apiService";
 
-function AllowableExpenses({
+function DisallowableExpenses({
   itemId,
-  showAllowableExpenses,
-  SetAllowableExpenses,
+  showDisallowableExpenses,
+  SetDisallowableExpenses,
 }: any) {
   const params = useParams();
   const [showForm, setShowForm] = useState(false);
@@ -18,14 +17,14 @@ function AllowableExpenses({
   const [dateIncurred, setDateIncurred] = useState("");
 
   useEffect(() => {
-    fetchAllowableExpenses();
+    fetchDisllowableExpenses();
   }, []);
 
-  async function fetchAllowableExpenses() {
+  async function fetchDisllowableExpenses() {
     try {
       const id = params.id;
-      const DBallowableExpenses = await GetMonthlyAllowableExpenses(id);
-      SetAllowableExpenses(DBallowableExpenses);
+      const DBDisallowableExpenses = await GetMonthlyDisallowableExpenses(id);
+      SetDisallowableExpenses(DBDisallowableExpenses);
     } catch (error) {
       console.error(error);
     }
@@ -36,38 +35,32 @@ function AllowableExpenses({
     return [parts[2], parts[1], parts[0]].join("-");
   }
 
-  // async function SendExpense(expensedata){
-  //     try {
-  //         const recordexpense = await
-
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const AllowableExpenseDate = reverseDate(
+    const DisAllowableExpenseDate = reverseDate(
       e.target.elements.dateIncurred.value
     );
     const id = params.id;
 
-    const allowableExpense = {
-      allowableExpenseDescription: e.target.elements.description.value,
-      allowableExpenseAmount: e.target.elements.amount.value,
-      expenseIncurred: AllowableExpenseDate,
-      periodId: itemId,
+    const DisAllowableExpense = {
+      disallowableExpenseDescription: e.target.elements.description.value,
+      disallowableExpenseAmount: e.target.elements.amount.value,
+      expenseIncurred: DisAllowableExpenseDate,
+      PeriodId: itemId,
       propertyID: id,
     };
 
     try {
-      const responseExpenses: any = await AddpropertyAllowableExpense(
-        allowableExpense
+      const responseExpenses: any = await AddpropertyDisAllowableExpense(
+        DisAllowableExpense
       );
 
       if (responseExpenses.status === 201) {
-        SetAllowableExpenses((prev: any) => [...prev, responseExpenses.data]);
+        SetDisallowableExpenses((prev: any) => [
+          ...prev,
+          responseExpenses.data,
+        ]);
       } else {
         console.log(responseExpenses.error);
       }
@@ -77,9 +70,10 @@ function AllowableExpenses({
   };
 
   return (
-    <div style={{ marginTop: "50px" }}>
-      {/* <h1>allowableExpenses</h1> */}
-      {showAllowableExpenses.map((expense: any) => {
+    <div style={{ marginTop: "20px" }}>
+      {/* <h1>DisAllowableExpenses</h1> */}
+
+      {showDisallowableExpenses.map((expense: any) => {
         if (expense.PeriodId === itemId) {
           return (
             <div key={expense.id}>
@@ -98,7 +92,7 @@ function AllowableExpenses({
         className="btn"
         onClick={() => setShowForm(!showForm)}
       >
-        Add Allowable Expense
+        Add Disallowable Expense
       </button>
       {showForm && (
         <form className="form-submit" onSubmit={handleSubmit}>
@@ -112,6 +106,7 @@ function AllowableExpenses({
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+
           <div className="inputname">
             <label className="inputlabel">Amount:</label>
             <input
@@ -122,27 +117,22 @@ function AllowableExpenses({
               onChange={(e) => setAmount(e.target.value)}
             />
           </div>
-
           <div className="inputname">
             <label className="inputlabel">Date Incurred:</label>
+
             <input
-              className="inputbar"
+              className="inputbarvalue"
               type="date"
               name="dateIncurred"
               value={dateIncurred}
               onChange={(e) => setDateIncurred(e.target.value)}
             />
           </div>
-          <input
-            className="btn"
-            type="submit"
-            value="Submit"
-            style={{ width: "100%", marginTop: "20px" }}
-          />
+          <input className="btn" type="submit" value="Submit" />
         </form>
       )}
     </div>
   );
 }
 
-export default AllowableExpenses;
+export default DisallowableExpenses;

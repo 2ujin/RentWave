@@ -1,8 +1,8 @@
 import moment from "moment";
 import AllowableExpenses from "./AllowableExpenses";
 import DisallowableExpenses from "./DisallowableExpenses";
-import calendar from "../images/calendar.png";
-import rental from "../images/rental.png";
+import calendar from "../assets/calendar.png";
+import rental from "../assets/rental.png";
 
 function Monthly({
   showAllowableExpenses,
