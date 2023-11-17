@@ -6,13 +6,15 @@ function PropertyList({ propertyOwned }: any) {
   return (
     <div className="all-property">
       {propertyOwned.map((item: any) => (
-        <div key={item.ID}>
-          <div className="image-container">
-            <h1 className="property-name">{item.PropertyName}</h1>
-            <Link to={`/summary/${item.ID}`}>
+        <div className="image-container">
+          <Link to={`/summary/${item.ID}`}>
+            <div className="house-wrapper">
               <img src={houseImage} className="house" alt="House" />
-            </Link>
-          </div>
+              <div className="property-wrapper">
+                <div className="property-name">{item.PropertyName}</div>
+              </div>
+            </div>
+          </Link>
         </div>
       ))}
     </div>

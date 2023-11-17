@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Summary from "./components/summary";
+
 import "./App.css";
 import PropertyList from "./components/Propertylist";
 import { GetProperties, AddNewProperty } from "./ApiServices/homepage";
+import Header from "./components/Header";
+import Summary from "./components/summary";
 
 function App(): JSX.Element {
   const [propertyOwned, setPropertyOwned] = useState<any>([]);
@@ -40,32 +42,38 @@ function App(): JSX.Element {
 
   return (
     <Router>
+      <Header />
       <div className="page">
-        <h1 className="title">Property Portfolio</h1>
-        <Link to="/">
-          <button onClick={() => setShowForm(false)}>home</button>
-        </Link>
-
-        <button onClick={() => setShowForm(true)}>Add New property</button>
+        <div className="title-wrapper">
+          <h1 className="title">
+            {!showForm ? "Property Portfolio" : "Add New Property"}
+          </h1>
+          {!showForm && (
+            <div className="btn" onClick={() => setShowForm(true)}>
+              + Add new property
+            </div>
+          )}
+        </div>
         {showForm ? (
           <form
             onSubmit={(newProperty: any) => {
               newProperty.preventDefault();
-
               const newPropertyInfo = {
                 name: newProperty.target.elements.propertyName.value,
               };
-
               handleAddProperty(newPropertyInfo);
             }}
           >
             <input
+              className="input"
               type="text"
               defaultValue={newProperty}
               name="propertyName"
               required
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn">
+              Submit
+            </button>
           </form>
         ) : (
           <Routes>

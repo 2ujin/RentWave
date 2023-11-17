@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Rentals from "./rentals";
+import Rentals from "./Rentals";
 import { useParams } from "react-router-dom";
 import "../ComponentStyling/summaryStyling.css";
 import { GetPropertysummary } from "../ApiServices/propertylanding";
