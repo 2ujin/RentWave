@@ -195,6 +195,22 @@ async function GetMonthlyInterestExpense(id: any) {
   }
 }
 
+async function DeleteProperty(id: any) {
+  try {
+    const data = await fetch(`${url}/deleteProperty/${id}`, {
+      method: "DELETE",
+    });
+    const response = await data;
+    if (data.ok) {
+      return { status: 200, data: response };
+    } else {
+      return { status: 400, error: response };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   AddpropertyAllowableExpense,
   AddpropertyDisAllowableExpense,
@@ -209,4 +225,5 @@ export {
   GetMonthlyRents,
   GetProperties,
   AddNewProperty,
+  DeleteProperty,
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Monthly from "./Monthly";
 import "../styles/RentalsStyling.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   AddpropertyRents,
   MonthlyInterest,
@@ -9,11 +9,12 @@ import {
   GetMonthlyRents,
   GetMonthlyInterestExpense,
   GetMonthlyCapitalRepayments,
+  DeleteProperty,
 } from "../api/apiService";
 import { propertyData } from "../types/types";
 const houseImage = require("../assets/3d-electric-car-building.jpg");
 
-function Rentals({ propertyId }: any) {
+function Rentals() {
   const [showForm, setShowForm] = useState(false);
   const [formValues, setFormValues] = useState({
     StartPeriod: "",
@@ -22,6 +23,7 @@ function Rentals({ propertyId }: any) {
     LoanInterest: 0,
     CapitalRepayment: 0,
   });
+  const navigate = useNavigate();
 
   const params = useParams();
   const [showAllowableExpenses, SetAllowableExpenses] = useState([]);
@@ -128,17 +130,33 @@ function Rentals({ propertyId }: any) {
     }
   }
 
+  async function handleDeleteProperty() {
+    const id = params.id;
+    await DeleteProperty(id);
+    navigate("/");
+  }
+
   return (
     <div className="rental-summary">
       <img className="rental-house" src={houseImage} />
       <div className="rental-wrapper">
         <div className="title-wrapper">
           <h1 className="title">Rental Summary</h1>
-          {!showForm && (
-            <div className="btn" onClick={() => setShowForm(true)}>
-              + Add Month
+          <div className="wrap">
+            <div
+              style={{ width: "100px" }}
+              className="btn"
+              onClick={() => handleDeleteProperty()}
+            >
+              Delete
             </div>
-          )}
+
+            {!showForm && (
+              <div className="btn" onClick={() => setShowForm(true)}>
+                + Add Month
+              </div>
+            )}
+          </div>
         </div>
 
         {showForm && (

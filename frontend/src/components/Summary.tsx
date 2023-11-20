@@ -23,7 +23,7 @@ function Summary() {
   return (
     <>
       <Header />
-      <Rentals propertyId={id} />
+      <Rentals key={id} />
     </>
   );
 }

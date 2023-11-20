@@ -8,6 +8,9 @@ const HeaderWrapper = styled.div`
   width: 100%;
   padding: 20px 50px;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   img {
     width: 50px;

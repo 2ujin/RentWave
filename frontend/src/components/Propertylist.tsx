@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import "../App.css";
-import { GetProperties, AddNewProperty } from "../api/apiService";
+import {
+  GetProperties,
+  AddNewProperty,
+  DeleteProperty,
+} from "../api/apiService";
 const houseImage = require("../assets/3d-electric-car-building.jpg");
 
 function PropertyList() {
@@ -21,6 +25,7 @@ function PropertyList() {
     };
     fetchproperties();
   }, []);
+
   async function handleAddProperty(propertyinfo: any) {
     try {
       const response: any = await AddNewProperty(propertyinfo);
@@ -37,6 +42,11 @@ function PropertyList() {
     }
   }
 
+  async function handleDeleteProperty() {
+    propertyOwned.map(async (item: any) => await DeleteProperty(item.ID));
+    setPropertyOwned([]);
+  }
+
   return (
     <>
       <Header />
@@ -45,11 +55,21 @@ function PropertyList() {
           <h1 className="title">
             {!showForm ? "Property Portfolio" : "Add New Property"}
           </h1>
-          {!showForm && (
-            <div className="btn" onClick={() => setShowForm(true)}>
-              + Add new property
+          <div className="wrap">
+            <div
+              style={{ width: "100px" }}
+              className="btn"
+              onClick={() => handleDeleteProperty()}
+            >
+              Delete
             </div>
-          )}
+
+            {!showForm && (
+              <div className="btn" onClick={() => setShowForm(true)}>
+                + Add new property
+              </div>
+            )}
+          </div>
         </div>
         {showForm && (
           <form
