@@ -1,3 +1,7 @@
+export interface newPropertyInfo {
+  PropertyName: string;
+}
+
 export interface propertyData {
   StartPeriod: string;
   EndPeriod: string;
