@@ -2,6 +2,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["debian-openssl-3.0.x", "darwin-arm64"]
   output   = "./generated/client"
 }
 
@@ -21,7 +22,7 @@ model RentalIncome {
   ID          String @id @default(auto()) @map("_id") @db.ObjectId
   StartPeriod String
   EndPeriod   String
-  Rental      String
+  Rental      Int
   PropertyID  String
 }
 
@@ -30,7 +31,7 @@ model InterestExpense {
   ID              String @id @default(auto()) @map("_id") @db.ObjectId
   StartPeriod     String
   EndPeriod       String
-  InterestExpense String
+  InterestExpense Int
   PropertyID      String
 }
 
@@ -39,7 +40,7 @@ model CapitalRepayments {
   ID            String @id @default(auto()) @map("_id") @db.ObjectId
   StartPeriod   String
   EndPeriod     String
-  CapitalRepaid String
+  CapitalRepaid Int
   PropertyID    String
 }
 
@@ -47,7 +48,7 @@ model CapitalRepayments {
 model DisallowableExpenses {
   ID           String @id @default(auto()) @map("_id") @db.ObjectId
   Description  String
-  Amount       String
+  Amount       Int
   PropertyID   String
   DateIncurred String
 }
@@ -56,7 +57,7 @@ model DisallowableExpenses {
 model AllowableExpenses {
   id           String @id @default(auto()) @map("_id") @db.ObjectId
   Description  String
-  Amount       String
+  Amount       Int
   PropertyID   String
   DateIncurred String
 }

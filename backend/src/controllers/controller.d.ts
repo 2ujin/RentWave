@@ -1,23 +1,27 @@
 export interface propertyData {
-  startDate: string;
-  endDate: string;
-  InterestPayable: string;
-  Capitalrepayment: string;
-  PropertyID: string;
-  CapitalRepayment: string;
-  Rental: string;
+  StartPeriod: string;
+  EndPeriod: string;
+  Rental: number;
+  LoanInterest?: number;
+  InterestExpense?: number | any;
+  CapitalRepayment: number;
+  InterestPayable?: string;
+  Capitalrepayment?: string;
+  PropertyID?: string | any;
+  CapitalRepaid?: number | any;
 }
 
 export interface allowableExpensesData {
-  allowableExpenseDescription: string;
-  allowableExpenseAmount: string;
-  propertyID: string;
-  expenseIncurred: string;
+  Description: string;
+  Amount: int;
+  PropertyID: string;
+  PeriodId?: string | any;
+  DateIncurred: string;
 }
 
 export interface disallowableExpensesData {
-  disallowableExpenseDescription: string;
-  disallowableExpenseAmount: string;
-  propertyID: string;
-  expenseIncurred: string;
+  Description: string;
+  Amount: int;
+  PropertyID: string;
+  DateIncurred: string;
 }

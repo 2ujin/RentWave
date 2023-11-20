@@ -10,16 +10,17 @@ import {
   GetMonthlyInterestExpense,
   GetMonthlyCapitalRepayments,
 } from "../api/apiService";
+import { propertyData } from "../types/types";
 const houseImage = require("../assets/3d-electric-car-building.jpg");
 
 function Rentals({ propertyId }: any) {
   const [showForm, setShowForm] = useState(false);
   const [formValues, setFormValues] = useState({
-    startPeriod: "",
-    endPeriod: "",
-    rentalIncome: "",
-    loanInterest: "",
-    capitalRepayment: "",
+    StartPeriod: "",
+    EndPeriod: "",
+    Rental: "",
+    LoanInterest: 0,
+    CapitalRepayment: 0,
   });
 
   const params = useParams();
@@ -30,10 +31,12 @@ function Rentals({ propertyId }: any) {
   const [showCapitalRepayment, SetCapitalRepayment] = useState<any>([]);
 
   const handleChange = (event: any) => {
+    console.log(event);
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
     });
+    console.log(formValues);
   };
 
   function reverseDate(date: any) {
@@ -43,31 +46,31 @@ function Rentals({ propertyId }: any) {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const startperiod = event.target.elements.startPeriod.value;
-    const endperiod = event.target.elements.endPeriod.value;
+    const StartPeriod = event.target.elements.StartPeriod.value;
+    const EndPeriod = event.target.elements.EndPeriod.value;
 
-    const startPeriodreverse = reverseDate(startperiod);
-    const endPeriodreverse = reverseDate(endperiod);
+    const startPeriodreverse = reverseDate(StartPeriod);
+    const endPeriodreverse = reverseDate(EndPeriod);
 
     const MonthlyRentals = {
-      startDate: startPeriodreverse,
-      endDate: endPeriodreverse,
+      StartPeriod: startPeriodreverse,
+      EndPeriod: endPeriodreverse,
       PropertyID: params.id,
-      Rental: event.target.elements.rentalIncome.value,
+      Rental: Number(event.target.elements.Rental.value),
     };
 
     const InterestRepayment = {
-      startDate: startPeriodreverse,
-      endDate: endPeriodreverse,
+      StartPeriod: startPeriodreverse,
+      EndPeriod: endPeriodreverse,
       PropertyID: params.id,
-      InterestPayable: event.target.elements.loanInterest.value,
+      LoanInterest: Number(event.target.elements.LoanInterest.value),
     };
 
     const CapitalRepayment = {
-      startDate: startPeriodreverse,
-      endDate: endPeriodreverse,
+      StartPeriod: startPeriodreverse,
+      EndPeriod: endPeriodreverse,
       PropertyID: params.id,
-      CapitalRepayment: event.target.elements.capitalRepayment.value,
+      CapitalRepaid: Number(event.target.elements.CapitalRepayment.value),
     };
 
     try {
@@ -145,8 +148,8 @@ function Rentals({ propertyId }: any) {
               <input
                 className="inputbar"
                 type="date"
-                name="startPeriod"
-                value={formValues.startPeriod}
+                name="StartPeriod"
+                value={formValues.StartPeriod}
                 onChange={handleChange}
               />
             </div>
@@ -156,8 +159,8 @@ function Rentals({ propertyId }: any) {
               <input
                 className="inputbar"
                 type="date"
-                name="endPeriod"
-                value={formValues.endPeriod}
+                name="EndPeriod"
+                value={formValues.EndPeriod}
                 onChange={handleChange}
               />
             </div>
@@ -167,8 +170,8 @@ function Rentals({ propertyId }: any) {
               <input
                 className="inputbarvalue"
                 type="number"
-                name="rentalIncome"
-                value={formValues.rentalIncome}
+                name="Rental"
+                value={formValues.Rental}
                 onChange={handleChange}
               />
             </div>
@@ -178,8 +181,8 @@ function Rentals({ propertyId }: any) {
               <input
                 className="inputbarvalue"
                 type="number"
-                name="loanInterest"
-                value={formValues.loanInterest}
+                name="LoanInterest"
+                value={formValues.LoanInterest}
                 onChange={handleChange}
               />
             </div>
@@ -189,8 +192,8 @@ function Rentals({ propertyId }: any) {
               <input
                 className="inputbarvalue"
                 type="number"
-                name="capitalRepayment"
-                value={formValues.capitalRepayment}
+                name="CapitalRepayment"
+                value={formValues.CapitalRepayment}
                 onChange={handleChange}
               />
             </div>
