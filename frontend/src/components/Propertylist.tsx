@@ -76,7 +76,7 @@ function PropertyList() {
 
         <div className="all-property">
           {propertyOwned.map((item: any) => (
-            <div className="image-container">
+            <div key={item.ID} className="image-container">
               <Link to={`/summary/${item.ID}`}>
                 <div className="house-wrapper">
                   <img src={houseImage} className="house" alt="House" />

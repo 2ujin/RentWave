@@ -92,7 +92,7 @@ function DisallowableExpenses({
         className="btn"
         onClick={() => setShowForm(!showForm)}
       >
-        Add Disallowable Expense
+        + Add Disallowable Expense
       </button>
       {showForm && (
         <form className="form-submit" onSubmit={handleSubmit}>
