@@ -139,4 +139,11 @@ describe("Test API routes", () => {
     expect(response.status).toBe(200);
     expect(response.body).toBeDefined();
   });
+
+  it("should delete property listing", async () => {
+    const response = await request(app).delete(
+      `/deleteProperty/${propertyId}/`
+    );
+    expect(response.status).toBe(200);
+  });
 });

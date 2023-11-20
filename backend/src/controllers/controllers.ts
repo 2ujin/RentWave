@@ -4,10 +4,26 @@ import { Request, Response } from "express";
 
 async function addProperty(request: Request, response: Response) {
   try {
-    const data = await models.addProperty(request.body);
+    const data = await models.addProperty(request.body.PropertyName);
     response.status(201).send(data);
   } catch (error) {
     response.status(500).send(`${error}`);
+  }
+}
+
+async function deleteProperty(request: Request, response: Response) {
+  const params = request.params;
+  try {
+    await models.deleteProperty(params.id);
+    response.status(200).send();
+  } catch (error: any) {
+    if (error.meta.cause === "Record to delete does not exist.") {
+      response
+        .status(404)
+        .send(`could not find the property with id: ${params.id}`);
+    } else {
+      response.status(500).send(`${error}`);
+    }
   }
 }
 
@@ -157,6 +173,7 @@ export default {
   recordInterestExpense,
   recordCapitalRepayment,
   addProperty,
+  deleteProperty,
   getPropertyListing,
   getPropertyDetails,
   recordRentalIncome,

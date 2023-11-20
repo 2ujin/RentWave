@@ -7,7 +7,7 @@ import { PrismaClient } from "../../prisma/generated/client";
 
 const prisma = new PrismaClient();
 
-async function addProperty({ PropertyName }: any) {
+async function addProperty(PropertyName: string) {
   try {
     const data = await prisma.propertyListing.create({
       data: {
@@ -16,6 +16,17 @@ async function addProperty({ PropertyName }: any) {
     });
     return data;
   } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+async function deleteProperty(id: string) {
+  try {
+    await prisma.propertyListing.delete({
+      where: { ID: id },
+    });
+  } catch (error: any) {
     console.error(error);
     throw error;
   }
@@ -222,6 +233,7 @@ export default {
   getPropertyMonthlyRentals,
   addCapitalRepayment,
   addProperty,
+  deleteProperty,
   getPropertyListing,
   getPropertyName,
   addRentalIncome,

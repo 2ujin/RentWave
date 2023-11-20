@@ -3,6 +3,7 @@ import express from "express";
 const router = express.Router();
 
 router.post("/addProperty", controllers.addProperty);
+router.delete("/deleteProperty/:id", controllers.deleteProperty);
 router.get("/propertylistings", controllers.getPropertyListing);
 router.get("/summary/:id", controllers.getPropertyDetails);
 
