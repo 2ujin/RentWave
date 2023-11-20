@@ -45,14 +45,19 @@ async function getPropertyName(id: string) {
   }
 }
 
-async function addRentalIncome(propertydata: propertyData) {
+async function addRentalIncome({
+  StartPeriod,
+  EndPeriod,
+  Rental,
+  PropertyID,
+}: propertyData) {
   try {
     const rentalData = await prisma.rentalIncome.create({
       data: {
-        StartPeriod: propertydata.startDate,
-        EndPeriod: propertydata.endDate,
-        Rental: propertydata.Rental,
-        PropertyID: propertydata.PropertyID,
+        StartPeriod,
+        EndPeriod,
+        Rental,
+        PropertyID: PropertyID,
       },
     });
     return rentalData;
@@ -62,14 +67,19 @@ async function addRentalIncome(propertydata: propertyData) {
   }
 }
 
-async function addInterestExpense(propertydata: propertyData) {
+async function addInterestExpense({
+  StartPeriod,
+  EndPeriod,
+  InterestExpense,
+  PropertyID,
+}: propertyData) {
   try {
     const interestExpenseData = await prisma.interestExpense.create({
       data: {
-        StartPeriod: propertydata.startDate,
-        EndPeriod: propertydata.endDate,
-        InterestExpense: propertydata.InterestPayable,
-        PropertyID: propertydata.PropertyID,
+        StartPeriod,
+        EndPeriod,
+        InterestExpense: InterestExpense || 0,
+        PropertyID,
       },
     });
     return interestExpenseData;
@@ -79,14 +89,20 @@ async function addInterestExpense(propertydata: propertyData) {
   }
 }
 
-async function addCapitalRepayment(propertydata: propertyData) {
+async function addCapitalRepayment({
+  StartPeriod,
+  EndPeriod,
+  CapitalRepaid,
+  PropertyID,
+}: propertyData) {
   try {
+    console.log(StartPeriod, EndPeriod, CapitalRepaid, PropertyID);
     const capitalRepaymentData = await prisma.capitalRepayments.create({
       data: {
-        StartPeriod: propertydata.startDate,
-        EndPeriod: propertydata.endDate,
-        CapitalRepaid: propertydata.CapitalRepayment,
-        PropertyID: propertydata.PropertyID,
+        StartPeriod,
+        EndPeriod,
+        CapitalRepaid,
+        PropertyID,
       },
     });
     return capitalRepaymentData;
@@ -132,14 +148,19 @@ async function getPropertyCapitalrepayments(id: string) {
   }
 }
 
-async function addAllowableExpense(data: allowableExpensesData) {
+async function addAllowableExpense({
+  Description,
+  Amount,
+  PropertyID,
+  DateIncurred,
+}: allowableExpensesData) {
   try {
     const expenseData = await prisma.allowableExpenses.create({
       data: {
-        Description: data.allowableExpenseDescription,
-        Amount: data.allowableExpenseAmount,
-        PropertyID: data.propertyID,
-        DateIncurred: data.expenseIncurred,
+        Description,
+        Amount,
+        PropertyID,
+        DateIncurred,
       },
     });
     return expenseData;
@@ -161,14 +182,19 @@ async function getAllowableExpenses(id: string) {
   }
 }
 
-async function addDisallowableExpense(data: disallowableExpensesData) {
+async function addDisallowableExpense({
+  Description,
+  Amount,
+  PropertyID,
+  DateIncurred,
+}: disallowableExpensesData) {
   try {
     const expenseData = await prisma.disallowableExpenses.create({
       data: {
-        Description: data.disallowableExpenseDescription,
-        Amount: data.disallowableExpenseAmount,
-        PropertyID: data.propertyID,
-        DateIncurred: data.expenseIncurred,
+        Description,
+        Amount,
+        PropertyID,
+        DateIncurred,
       },
     });
     return expenseData;

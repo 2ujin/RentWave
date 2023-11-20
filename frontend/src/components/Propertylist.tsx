@@ -56,7 +56,7 @@ function PropertyList() {
             onSubmit={(newProperty: any) => {
               newProperty.preventDefault();
               const newPropertyInfo = {
-                name: newProperty.target.elements.propertyName.value,
+                PropertyName: newProperty.target.elements.propertyName.value,
               };
               handleAddProperty(newPropertyInfo);
             }}

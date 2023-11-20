@@ -2169,15 +2169,25 @@ export namespace Prisma {
 
   export type AggregateRentalIncome = {
     _count: RentalIncomeCountAggregateOutputType | null
+    _avg: RentalIncomeAvgAggregateOutputType | null
+    _sum: RentalIncomeSumAggregateOutputType | null
     _min: RentalIncomeMinAggregateOutputType | null
     _max: RentalIncomeMaxAggregateOutputType | null
+  }
+
+  export type RentalIncomeAvgAggregateOutputType = {
+    Rental: number | null
+  }
+
+  export type RentalIncomeSumAggregateOutputType = {
+    Rental: number | null
   }
 
   export type RentalIncomeMinAggregateOutputType = {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    Rental: string | null
+    Rental: number | null
     PropertyID: string | null
   }
 
@@ -2185,7 +2195,7 @@ export namespace Prisma {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    Rental: string | null
+    Rental: number | null
     PropertyID: string | null
   }
 
@@ -2198,6 +2208,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type RentalIncomeAvgAggregateInputType = {
+    Rental?: true
+  }
+
+  export type RentalIncomeSumAggregateInputType = {
+    Rental?: true
+  }
 
   export type RentalIncomeMinAggregateInputType = {
     ID?: true
@@ -2262,6 +2280,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: RentalIncomeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RentalIncomeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: RentalIncomeMinAggregateInputType
@@ -2292,6 +2322,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: RentalIncomeCountAggregateInputType | true
+    _avg?: RentalIncomeAvgAggregateInputType
+    _sum?: RentalIncomeSumAggregateInputType
     _min?: RentalIncomeMinAggregateInputType
     _max?: RentalIncomeMaxAggregateInputType
   }
@@ -2300,9 +2332,11 @@ export namespace Prisma {
     ID: string
     StartPeriod: string
     EndPeriod: string
-    Rental: string
+    Rental: number
     PropertyID: string
     _count: RentalIncomeCountAggregateOutputType | null
+    _avg: RentalIncomeAvgAggregateOutputType | null
+    _sum: RentalIncomeSumAggregateOutputType | null
     _min: RentalIncomeMinAggregateOutputType | null
     _max: RentalIncomeMaxAggregateOutputType | null
   }
@@ -2345,7 +2379,7 @@ export namespace Prisma {
       ID: string
       StartPeriod: string
       EndPeriod: string
-      Rental: string
+      Rental: number
       PropertyID: string
     }, ExtArgs["result"]["rentalIncome"]>
     composites: {}
@@ -2771,7 +2805,7 @@ export namespace Prisma {
     readonly ID: FieldRef<"RentalIncome", 'String'>
     readonly StartPeriod: FieldRef<"RentalIncome", 'String'>
     readonly EndPeriod: FieldRef<"RentalIncome", 'String'>
-    readonly Rental: FieldRef<"RentalIncome", 'String'>
+    readonly Rental: FieldRef<"RentalIncome", 'Int'>
     readonly PropertyID: FieldRef<"RentalIncome", 'String'>
   }
     
@@ -3095,15 +3129,25 @@ export namespace Prisma {
 
   export type AggregateInterestExpense = {
     _count: InterestExpenseCountAggregateOutputType | null
+    _avg: InterestExpenseAvgAggregateOutputType | null
+    _sum: InterestExpenseSumAggregateOutputType | null
     _min: InterestExpenseMinAggregateOutputType | null
     _max: InterestExpenseMaxAggregateOutputType | null
+  }
+
+  export type InterestExpenseAvgAggregateOutputType = {
+    InterestExpense: number | null
+  }
+
+  export type InterestExpenseSumAggregateOutputType = {
+    InterestExpense: number | null
   }
 
   export type InterestExpenseMinAggregateOutputType = {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    InterestExpense: string | null
+    InterestExpense: number | null
     PropertyID: string | null
   }
 
@@ -3111,7 +3155,7 @@ export namespace Prisma {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    InterestExpense: string | null
+    InterestExpense: number | null
     PropertyID: string | null
   }
 
@@ -3124,6 +3168,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type InterestExpenseAvgAggregateInputType = {
+    InterestExpense?: true
+  }
+
+  export type InterestExpenseSumAggregateInputType = {
+    InterestExpense?: true
+  }
 
   export type InterestExpenseMinAggregateInputType = {
     ID?: true
@@ -3188,6 +3240,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: InterestExpenseAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: InterestExpenseSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: InterestExpenseMinAggregateInputType
@@ -3218,6 +3282,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: InterestExpenseCountAggregateInputType | true
+    _avg?: InterestExpenseAvgAggregateInputType
+    _sum?: InterestExpenseSumAggregateInputType
     _min?: InterestExpenseMinAggregateInputType
     _max?: InterestExpenseMaxAggregateInputType
   }
@@ -3226,9 +3292,11 @@ export namespace Prisma {
     ID: string
     StartPeriod: string
     EndPeriod: string
-    InterestExpense: string
+    InterestExpense: number
     PropertyID: string
     _count: InterestExpenseCountAggregateOutputType | null
+    _avg: InterestExpenseAvgAggregateOutputType | null
+    _sum: InterestExpenseSumAggregateOutputType | null
     _min: InterestExpenseMinAggregateOutputType | null
     _max: InterestExpenseMaxAggregateOutputType | null
   }
@@ -3271,7 +3339,7 @@ export namespace Prisma {
       ID: string
       StartPeriod: string
       EndPeriod: string
-      InterestExpense: string
+      InterestExpense: number
       PropertyID: string
     }, ExtArgs["result"]["interestExpense"]>
     composites: {}
@@ -3697,7 +3765,7 @@ export namespace Prisma {
     readonly ID: FieldRef<"InterestExpense", 'String'>
     readonly StartPeriod: FieldRef<"InterestExpense", 'String'>
     readonly EndPeriod: FieldRef<"InterestExpense", 'String'>
-    readonly InterestExpense: FieldRef<"InterestExpense", 'String'>
+    readonly InterestExpense: FieldRef<"InterestExpense", 'Int'>
     readonly PropertyID: FieldRef<"InterestExpense", 'String'>
   }
     
@@ -4021,15 +4089,25 @@ export namespace Prisma {
 
   export type AggregateCapitalRepayments = {
     _count: CapitalRepaymentsCountAggregateOutputType | null
+    _avg: CapitalRepaymentsAvgAggregateOutputType | null
+    _sum: CapitalRepaymentsSumAggregateOutputType | null
     _min: CapitalRepaymentsMinAggregateOutputType | null
     _max: CapitalRepaymentsMaxAggregateOutputType | null
+  }
+
+  export type CapitalRepaymentsAvgAggregateOutputType = {
+    CapitalRepaid: number | null
+  }
+
+  export type CapitalRepaymentsSumAggregateOutputType = {
+    CapitalRepaid: number | null
   }
 
   export type CapitalRepaymentsMinAggregateOutputType = {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    CapitalRepaid: string | null
+    CapitalRepaid: number | null
     PropertyID: string | null
   }
 
@@ -4037,7 +4115,7 @@ export namespace Prisma {
     ID: string | null
     StartPeriod: string | null
     EndPeriod: string | null
-    CapitalRepaid: string | null
+    CapitalRepaid: number | null
     PropertyID: string | null
   }
 
@@ -4050,6 +4128,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type CapitalRepaymentsAvgAggregateInputType = {
+    CapitalRepaid?: true
+  }
+
+  export type CapitalRepaymentsSumAggregateInputType = {
+    CapitalRepaid?: true
+  }
 
   export type CapitalRepaymentsMinAggregateInputType = {
     ID?: true
@@ -4114,6 +4200,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: CapitalRepaymentsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CapitalRepaymentsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: CapitalRepaymentsMinAggregateInputType
@@ -4144,6 +4242,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CapitalRepaymentsCountAggregateInputType | true
+    _avg?: CapitalRepaymentsAvgAggregateInputType
+    _sum?: CapitalRepaymentsSumAggregateInputType
     _min?: CapitalRepaymentsMinAggregateInputType
     _max?: CapitalRepaymentsMaxAggregateInputType
   }
@@ -4152,9 +4252,11 @@ export namespace Prisma {
     ID: string
     StartPeriod: string
     EndPeriod: string
-    CapitalRepaid: string
+    CapitalRepaid: number
     PropertyID: string
     _count: CapitalRepaymentsCountAggregateOutputType | null
+    _avg: CapitalRepaymentsAvgAggregateOutputType | null
+    _sum: CapitalRepaymentsSumAggregateOutputType | null
     _min: CapitalRepaymentsMinAggregateOutputType | null
     _max: CapitalRepaymentsMaxAggregateOutputType | null
   }
@@ -4197,7 +4299,7 @@ export namespace Prisma {
       ID: string
       StartPeriod: string
       EndPeriod: string
-      CapitalRepaid: string
+      CapitalRepaid: number
       PropertyID: string
     }, ExtArgs["result"]["capitalRepayments"]>
     composites: {}
@@ -4623,7 +4725,7 @@ export namespace Prisma {
     readonly ID: FieldRef<"CapitalRepayments", 'String'>
     readonly StartPeriod: FieldRef<"CapitalRepayments", 'String'>
     readonly EndPeriod: FieldRef<"CapitalRepayments", 'String'>
-    readonly CapitalRepaid: FieldRef<"CapitalRepayments", 'String'>
+    readonly CapitalRepaid: FieldRef<"CapitalRepayments", 'Int'>
     readonly PropertyID: FieldRef<"CapitalRepayments", 'String'>
   }
     
@@ -4947,14 +5049,24 @@ export namespace Prisma {
 
   export type AggregateDisallowableExpenses = {
     _count: DisallowableExpensesCountAggregateOutputType | null
+    _avg: DisallowableExpensesAvgAggregateOutputType | null
+    _sum: DisallowableExpensesSumAggregateOutputType | null
     _min: DisallowableExpensesMinAggregateOutputType | null
     _max: DisallowableExpensesMaxAggregateOutputType | null
+  }
+
+  export type DisallowableExpensesAvgAggregateOutputType = {
+    Amount: number | null
+  }
+
+  export type DisallowableExpensesSumAggregateOutputType = {
+    Amount: number | null
   }
 
   export type DisallowableExpensesMinAggregateOutputType = {
     ID: string | null
     Description: string | null
-    Amount: string | null
+    Amount: number | null
     PropertyID: string | null
     DateIncurred: string | null
   }
@@ -4962,7 +5074,7 @@ export namespace Prisma {
   export type DisallowableExpensesMaxAggregateOutputType = {
     ID: string | null
     Description: string | null
-    Amount: string | null
+    Amount: number | null
     PropertyID: string | null
     DateIncurred: string | null
   }
@@ -4976,6 +5088,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type DisallowableExpensesAvgAggregateInputType = {
+    Amount?: true
+  }
+
+  export type DisallowableExpensesSumAggregateInputType = {
+    Amount?: true
+  }
 
   export type DisallowableExpensesMinAggregateInputType = {
     ID?: true
@@ -5040,6 +5160,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: DisallowableExpensesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DisallowableExpensesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: DisallowableExpensesMinAggregateInputType
@@ -5070,6 +5202,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: DisallowableExpensesCountAggregateInputType | true
+    _avg?: DisallowableExpensesAvgAggregateInputType
+    _sum?: DisallowableExpensesSumAggregateInputType
     _min?: DisallowableExpensesMinAggregateInputType
     _max?: DisallowableExpensesMaxAggregateInputType
   }
@@ -5077,10 +5211,12 @@ export namespace Prisma {
   export type DisallowableExpensesGroupByOutputType = {
     ID: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
     _count: DisallowableExpensesCountAggregateOutputType | null
+    _avg: DisallowableExpensesAvgAggregateOutputType | null
+    _sum: DisallowableExpensesSumAggregateOutputType | null
     _min: DisallowableExpensesMinAggregateOutputType | null
     _max: DisallowableExpensesMaxAggregateOutputType | null
   }
@@ -5122,7 +5258,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       ID: string
       Description: string
-      Amount: string
+      Amount: number
       PropertyID: string
       DateIncurred: string
     }, ExtArgs["result"]["disallowableExpenses"]>
@@ -5548,7 +5684,7 @@ export namespace Prisma {
   interface DisallowableExpensesFieldRefs {
     readonly ID: FieldRef<"DisallowableExpenses", 'String'>
     readonly Description: FieldRef<"DisallowableExpenses", 'String'>
-    readonly Amount: FieldRef<"DisallowableExpenses", 'String'>
+    readonly Amount: FieldRef<"DisallowableExpenses", 'Int'>
     readonly PropertyID: FieldRef<"DisallowableExpenses", 'String'>
     readonly DateIncurred: FieldRef<"DisallowableExpenses", 'String'>
   }
@@ -5873,14 +6009,24 @@ export namespace Prisma {
 
   export type AggregateAllowableExpenses = {
     _count: AllowableExpensesCountAggregateOutputType | null
+    _avg: AllowableExpensesAvgAggregateOutputType | null
+    _sum: AllowableExpensesSumAggregateOutputType | null
     _min: AllowableExpensesMinAggregateOutputType | null
     _max: AllowableExpensesMaxAggregateOutputType | null
+  }
+
+  export type AllowableExpensesAvgAggregateOutputType = {
+    Amount: number | null
+  }
+
+  export type AllowableExpensesSumAggregateOutputType = {
+    Amount: number | null
   }
 
   export type AllowableExpensesMinAggregateOutputType = {
     id: string | null
     Description: string | null
-    Amount: string | null
+    Amount: number | null
     PropertyID: string | null
     DateIncurred: string | null
   }
@@ -5888,7 +6034,7 @@ export namespace Prisma {
   export type AllowableExpensesMaxAggregateOutputType = {
     id: string | null
     Description: string | null
-    Amount: string | null
+    Amount: number | null
     PropertyID: string | null
     DateIncurred: string | null
   }
@@ -5902,6 +6048,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type AllowableExpensesAvgAggregateInputType = {
+    Amount?: true
+  }
+
+  export type AllowableExpensesSumAggregateInputType = {
+    Amount?: true
+  }
 
   export type AllowableExpensesMinAggregateInputType = {
     id?: true
@@ -5966,6 +6120,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: AllowableExpensesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AllowableExpensesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: AllowableExpensesMinAggregateInputType
@@ -5996,6 +6162,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AllowableExpensesCountAggregateInputType | true
+    _avg?: AllowableExpensesAvgAggregateInputType
+    _sum?: AllowableExpensesSumAggregateInputType
     _min?: AllowableExpensesMinAggregateInputType
     _max?: AllowableExpensesMaxAggregateInputType
   }
@@ -6003,10 +6171,12 @@ export namespace Prisma {
   export type AllowableExpensesGroupByOutputType = {
     id: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
     _count: AllowableExpensesCountAggregateOutputType | null
+    _avg: AllowableExpensesAvgAggregateOutputType | null
+    _sum: AllowableExpensesSumAggregateOutputType | null
     _min: AllowableExpensesMinAggregateOutputType | null
     _max: AllowableExpensesMaxAggregateOutputType | null
   }
@@ -6048,7 +6218,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       Description: string
-      Amount: string
+      Amount: number
       PropertyID: string
       DateIncurred: string
     }, ExtArgs["result"]["allowableExpenses"]>
@@ -6474,7 +6644,7 @@ export namespace Prisma {
   interface AllowableExpensesFieldRefs {
     readonly id: FieldRef<"AllowableExpenses", 'String'>
     readonly Description: FieldRef<"AllowableExpenses", 'String'>
-    readonly Amount: FieldRef<"AllowableExpenses", 'String'>
+    readonly Amount: FieldRef<"AllowableExpenses", 'Int'>
     readonly PropertyID: FieldRef<"AllowableExpenses", 'String'>
     readonly DateIncurred: FieldRef<"AllowableExpenses", 'String'>
   }
@@ -6907,6 +7077,20 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
@@ -6956,7 +7140,7 @@ export namespace Prisma {
     ID?: StringFilter<"RentalIncome"> | string
     StartPeriod?: StringFilter<"RentalIncome"> | string
     EndPeriod?: StringFilter<"RentalIncome"> | string
-    Rental?: StringFilter<"RentalIncome"> | string
+    Rental?: IntFilter<"RentalIncome"> | number
     PropertyID?: StringFilter<"RentalIncome"> | string
   }
 
@@ -6975,7 +7159,7 @@ export namespace Prisma {
     NOT?: RentalIncomeWhereInput | RentalIncomeWhereInput[]
     StartPeriod?: StringFilter<"RentalIncome"> | string
     EndPeriod?: StringFilter<"RentalIncome"> | string
-    Rental?: StringFilter<"RentalIncome"> | string
+    Rental?: IntFilter<"RentalIncome"> | number
     PropertyID?: StringFilter<"RentalIncome"> | string
   }, "ID">
 
@@ -6986,8 +7170,10 @@ export namespace Prisma {
     Rental?: SortOrder
     PropertyID?: SortOrder
     _count?: RentalIncomeCountOrderByAggregateInput
+    _avg?: RentalIncomeAvgOrderByAggregateInput
     _max?: RentalIncomeMaxOrderByAggregateInput
     _min?: RentalIncomeMinOrderByAggregateInput
+    _sum?: RentalIncomeSumOrderByAggregateInput
   }
 
   export type RentalIncomeScalarWhereWithAggregatesInput = {
@@ -6997,7 +7183,7 @@ export namespace Prisma {
     ID?: StringWithAggregatesFilter<"RentalIncome"> | string
     StartPeriod?: StringWithAggregatesFilter<"RentalIncome"> | string
     EndPeriod?: StringWithAggregatesFilter<"RentalIncome"> | string
-    Rental?: StringWithAggregatesFilter<"RentalIncome"> | string
+    Rental?: IntWithAggregatesFilter<"RentalIncome"> | number
     PropertyID?: StringWithAggregatesFilter<"RentalIncome"> | string
   }
 
@@ -7008,7 +7194,7 @@ export namespace Prisma {
     ID?: StringFilter<"InterestExpense"> | string
     StartPeriod?: StringFilter<"InterestExpense"> | string
     EndPeriod?: StringFilter<"InterestExpense"> | string
-    InterestExpense?: StringFilter<"InterestExpense"> | string
+    InterestExpense?: IntFilter<"InterestExpense"> | number
     PropertyID?: StringFilter<"InterestExpense"> | string
   }
 
@@ -7027,7 +7213,7 @@ export namespace Prisma {
     NOT?: InterestExpenseWhereInput | InterestExpenseWhereInput[]
     StartPeriod?: StringFilter<"InterestExpense"> | string
     EndPeriod?: StringFilter<"InterestExpense"> | string
-    InterestExpense?: StringFilter<"InterestExpense"> | string
+    InterestExpense?: IntFilter<"InterestExpense"> | number
     PropertyID?: StringFilter<"InterestExpense"> | string
   }, "ID">
 
@@ -7038,8 +7224,10 @@ export namespace Prisma {
     InterestExpense?: SortOrder
     PropertyID?: SortOrder
     _count?: InterestExpenseCountOrderByAggregateInput
+    _avg?: InterestExpenseAvgOrderByAggregateInput
     _max?: InterestExpenseMaxOrderByAggregateInput
     _min?: InterestExpenseMinOrderByAggregateInput
+    _sum?: InterestExpenseSumOrderByAggregateInput
   }
 
   export type InterestExpenseScalarWhereWithAggregatesInput = {
@@ -7049,7 +7237,7 @@ export namespace Prisma {
     ID?: StringWithAggregatesFilter<"InterestExpense"> | string
     StartPeriod?: StringWithAggregatesFilter<"InterestExpense"> | string
     EndPeriod?: StringWithAggregatesFilter<"InterestExpense"> | string
-    InterestExpense?: StringWithAggregatesFilter<"InterestExpense"> | string
+    InterestExpense?: IntWithAggregatesFilter<"InterestExpense"> | number
     PropertyID?: StringWithAggregatesFilter<"InterestExpense"> | string
   }
 
@@ -7060,7 +7248,7 @@ export namespace Prisma {
     ID?: StringFilter<"CapitalRepayments"> | string
     StartPeriod?: StringFilter<"CapitalRepayments"> | string
     EndPeriod?: StringFilter<"CapitalRepayments"> | string
-    CapitalRepaid?: StringFilter<"CapitalRepayments"> | string
+    CapitalRepaid?: IntFilter<"CapitalRepayments"> | number
     PropertyID?: StringFilter<"CapitalRepayments"> | string
   }
 
@@ -7079,7 +7267,7 @@ export namespace Prisma {
     NOT?: CapitalRepaymentsWhereInput | CapitalRepaymentsWhereInput[]
     StartPeriod?: StringFilter<"CapitalRepayments"> | string
     EndPeriod?: StringFilter<"CapitalRepayments"> | string
-    CapitalRepaid?: StringFilter<"CapitalRepayments"> | string
+    CapitalRepaid?: IntFilter<"CapitalRepayments"> | number
     PropertyID?: StringFilter<"CapitalRepayments"> | string
   }, "ID">
 
@@ -7090,8 +7278,10 @@ export namespace Prisma {
     CapitalRepaid?: SortOrder
     PropertyID?: SortOrder
     _count?: CapitalRepaymentsCountOrderByAggregateInput
+    _avg?: CapitalRepaymentsAvgOrderByAggregateInput
     _max?: CapitalRepaymentsMaxOrderByAggregateInput
     _min?: CapitalRepaymentsMinOrderByAggregateInput
+    _sum?: CapitalRepaymentsSumOrderByAggregateInput
   }
 
   export type CapitalRepaymentsScalarWhereWithAggregatesInput = {
@@ -7101,7 +7291,7 @@ export namespace Prisma {
     ID?: StringWithAggregatesFilter<"CapitalRepayments"> | string
     StartPeriod?: StringWithAggregatesFilter<"CapitalRepayments"> | string
     EndPeriod?: StringWithAggregatesFilter<"CapitalRepayments"> | string
-    CapitalRepaid?: StringWithAggregatesFilter<"CapitalRepayments"> | string
+    CapitalRepaid?: IntWithAggregatesFilter<"CapitalRepayments"> | number
     PropertyID?: StringWithAggregatesFilter<"CapitalRepayments"> | string
   }
 
@@ -7111,7 +7301,7 @@ export namespace Prisma {
     NOT?: DisallowableExpensesWhereInput | DisallowableExpensesWhereInput[]
     ID?: StringFilter<"DisallowableExpenses"> | string
     Description?: StringFilter<"DisallowableExpenses"> | string
-    Amount?: StringFilter<"DisallowableExpenses"> | string
+    Amount?: IntFilter<"DisallowableExpenses"> | number
     PropertyID?: StringFilter<"DisallowableExpenses"> | string
     DateIncurred?: StringFilter<"DisallowableExpenses"> | string
   }
@@ -7130,7 +7320,7 @@ export namespace Prisma {
     OR?: DisallowableExpensesWhereInput[]
     NOT?: DisallowableExpensesWhereInput | DisallowableExpensesWhereInput[]
     Description?: StringFilter<"DisallowableExpenses"> | string
-    Amount?: StringFilter<"DisallowableExpenses"> | string
+    Amount?: IntFilter<"DisallowableExpenses"> | number
     PropertyID?: StringFilter<"DisallowableExpenses"> | string
     DateIncurred?: StringFilter<"DisallowableExpenses"> | string
   }, "ID">
@@ -7142,8 +7332,10 @@ export namespace Prisma {
     PropertyID?: SortOrder
     DateIncurred?: SortOrder
     _count?: DisallowableExpensesCountOrderByAggregateInput
+    _avg?: DisallowableExpensesAvgOrderByAggregateInput
     _max?: DisallowableExpensesMaxOrderByAggregateInput
     _min?: DisallowableExpensesMinOrderByAggregateInput
+    _sum?: DisallowableExpensesSumOrderByAggregateInput
   }
 
   export type DisallowableExpensesScalarWhereWithAggregatesInput = {
@@ -7152,7 +7344,7 @@ export namespace Prisma {
     NOT?: DisallowableExpensesScalarWhereWithAggregatesInput | DisallowableExpensesScalarWhereWithAggregatesInput[]
     ID?: StringWithAggregatesFilter<"DisallowableExpenses"> | string
     Description?: StringWithAggregatesFilter<"DisallowableExpenses"> | string
-    Amount?: StringWithAggregatesFilter<"DisallowableExpenses"> | string
+    Amount?: IntWithAggregatesFilter<"DisallowableExpenses"> | number
     PropertyID?: StringWithAggregatesFilter<"DisallowableExpenses"> | string
     DateIncurred?: StringWithAggregatesFilter<"DisallowableExpenses"> | string
   }
@@ -7163,7 +7355,7 @@ export namespace Prisma {
     NOT?: AllowableExpensesWhereInput | AllowableExpensesWhereInput[]
     id?: StringFilter<"AllowableExpenses"> | string
     Description?: StringFilter<"AllowableExpenses"> | string
-    Amount?: StringFilter<"AllowableExpenses"> | string
+    Amount?: IntFilter<"AllowableExpenses"> | number
     PropertyID?: StringFilter<"AllowableExpenses"> | string
     DateIncurred?: StringFilter<"AllowableExpenses"> | string
   }
@@ -7182,7 +7374,7 @@ export namespace Prisma {
     OR?: AllowableExpensesWhereInput[]
     NOT?: AllowableExpensesWhereInput | AllowableExpensesWhereInput[]
     Description?: StringFilter<"AllowableExpenses"> | string
-    Amount?: StringFilter<"AllowableExpenses"> | string
+    Amount?: IntFilter<"AllowableExpenses"> | number
     PropertyID?: StringFilter<"AllowableExpenses"> | string
     DateIncurred?: StringFilter<"AllowableExpenses"> | string
   }, "id">
@@ -7194,8 +7386,10 @@ export namespace Prisma {
     PropertyID?: SortOrder
     DateIncurred?: SortOrder
     _count?: AllowableExpensesCountOrderByAggregateInput
+    _avg?: AllowableExpensesAvgOrderByAggregateInput
     _max?: AllowableExpensesMaxOrderByAggregateInput
     _min?: AllowableExpensesMinOrderByAggregateInput
+    _sum?: AllowableExpensesSumOrderByAggregateInput
   }
 
   export type AllowableExpensesScalarWhereWithAggregatesInput = {
@@ -7204,7 +7398,7 @@ export namespace Prisma {
     NOT?: AllowableExpensesScalarWhereWithAggregatesInput | AllowableExpensesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AllowableExpenses"> | string
     Description?: StringWithAggregatesFilter<"AllowableExpenses"> | string
-    Amount?: StringWithAggregatesFilter<"AllowableExpenses"> | string
+    Amount?: IntWithAggregatesFilter<"AllowableExpenses"> | number
     PropertyID?: StringWithAggregatesFilter<"AllowableExpenses"> | string
     DateIncurred?: StringWithAggregatesFilter<"AllowableExpenses"> | string
   }
@@ -7244,7 +7438,7 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    Rental: string
+    Rental: number
     PropertyID: string
   }
 
@@ -7252,21 +7446,21 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    Rental: string
+    Rental: number
     PropertyID: string
   }
 
   export type RentalIncomeUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    Rental?: StringFieldUpdateOperationsInput | string
+    Rental?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type RentalIncomeUncheckedUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    Rental?: StringFieldUpdateOperationsInput | string
+    Rental?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7274,21 +7468,21 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    Rental: string
+    Rental: number
     PropertyID: string
   }
 
   export type RentalIncomeUpdateManyMutationInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    Rental?: StringFieldUpdateOperationsInput | string
+    Rental?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type RentalIncomeUncheckedUpdateManyInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    Rental?: StringFieldUpdateOperationsInput | string
+    Rental?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7296,7 +7490,7 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    InterestExpense: string
+    InterestExpense: number
     PropertyID: string
   }
 
@@ -7304,21 +7498,21 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    InterestExpense: string
+    InterestExpense: number
     PropertyID: string
   }
 
   export type InterestExpenseUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    InterestExpense?: StringFieldUpdateOperationsInput | string
+    InterestExpense?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type InterestExpenseUncheckedUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    InterestExpense?: StringFieldUpdateOperationsInput | string
+    InterestExpense?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7326,21 +7520,21 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    InterestExpense: string
+    InterestExpense: number
     PropertyID: string
   }
 
   export type InterestExpenseUpdateManyMutationInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    InterestExpense?: StringFieldUpdateOperationsInput | string
+    InterestExpense?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type InterestExpenseUncheckedUpdateManyInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    InterestExpense?: StringFieldUpdateOperationsInput | string
+    InterestExpense?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7348,7 +7542,7 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    CapitalRepaid: string
+    CapitalRepaid: number
     PropertyID: string
   }
 
@@ -7356,21 +7550,21 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    CapitalRepaid: string
+    CapitalRepaid: number
     PropertyID: string
   }
 
   export type CapitalRepaymentsUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    CapitalRepaid?: StringFieldUpdateOperationsInput | string
+    CapitalRepaid?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type CapitalRepaymentsUncheckedUpdateInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    CapitalRepaid?: StringFieldUpdateOperationsInput | string
+    CapitalRepaid?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7378,28 +7572,28 @@ export namespace Prisma {
     ID?: string
     StartPeriod: string
     EndPeriod: string
-    CapitalRepaid: string
+    CapitalRepaid: number
     PropertyID: string
   }
 
   export type CapitalRepaymentsUpdateManyMutationInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    CapitalRepaid?: StringFieldUpdateOperationsInput | string
+    CapitalRepaid?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type CapitalRepaymentsUncheckedUpdateManyInput = {
     StartPeriod?: StringFieldUpdateOperationsInput | string
     EndPeriod?: StringFieldUpdateOperationsInput | string
-    CapitalRepaid?: StringFieldUpdateOperationsInput | string
+    CapitalRepaid?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
   }
 
   export type DisallowableExpensesCreateInput = {
     ID?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
@@ -7407,21 +7601,21 @@ export namespace Prisma {
   export type DisallowableExpensesUncheckedCreateInput = {
     ID?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
 
   export type DisallowableExpensesUpdateInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
 
   export type DisallowableExpensesUncheckedUpdateInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
@@ -7429,21 +7623,21 @@ export namespace Prisma {
   export type DisallowableExpensesCreateManyInput = {
     ID?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
 
   export type DisallowableExpensesUpdateManyMutationInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
 
   export type DisallowableExpensesUncheckedUpdateManyInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
@@ -7451,7 +7645,7 @@ export namespace Prisma {
   export type AllowableExpensesCreateInput = {
     id?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
@@ -7459,21 +7653,21 @@ export namespace Prisma {
   export type AllowableExpensesUncheckedCreateInput = {
     id?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
 
   export type AllowableExpensesUpdateInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
 
   export type AllowableExpensesUncheckedUpdateInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
@@ -7481,21 +7675,21 @@ export namespace Prisma {
   export type AllowableExpensesCreateManyInput = {
     id?: string
     Description: string
-    Amount: string
+    Amount: number
     PropertyID: string
     DateIncurred: string
   }
 
   export type AllowableExpensesUpdateManyMutationInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
 
   export type AllowableExpensesUncheckedUpdateManyInput = {
     Description?: StringFieldUpdateOperationsInput | string
-    Amount?: StringFieldUpdateOperationsInput | string
+    Amount?: IntFieldUpdateOperationsInput | number
     PropertyID?: StringFieldUpdateOperationsInput | string
     DateIncurred?: StringFieldUpdateOperationsInput | string
   }
@@ -7548,12 +7742,27 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type RentalIncomeCountOrderByAggregateInput = {
     ID?: SortOrder
     StartPeriod?: SortOrder
     EndPeriod?: SortOrder
     Rental?: SortOrder
     PropertyID?: SortOrder
+  }
+
+  export type RentalIncomeAvgOrderByAggregateInput = {
+    Rental?: SortOrder
   }
 
   export type RentalIncomeMaxOrderByAggregateInput = {
@@ -7572,12 +7781,36 @@ export namespace Prisma {
     PropertyID?: SortOrder
   }
 
+  export type RentalIncomeSumOrderByAggregateInput = {
+    Rental?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type InterestExpenseCountOrderByAggregateInput = {
     ID?: SortOrder
     StartPeriod?: SortOrder
     EndPeriod?: SortOrder
     InterestExpense?: SortOrder
     PropertyID?: SortOrder
+  }
+
+  export type InterestExpenseAvgOrderByAggregateInput = {
+    InterestExpense?: SortOrder
   }
 
   export type InterestExpenseMaxOrderByAggregateInput = {
@@ -7596,12 +7829,20 @@ export namespace Prisma {
     PropertyID?: SortOrder
   }
 
+  export type InterestExpenseSumOrderByAggregateInput = {
+    InterestExpense?: SortOrder
+  }
+
   export type CapitalRepaymentsCountOrderByAggregateInput = {
     ID?: SortOrder
     StartPeriod?: SortOrder
     EndPeriod?: SortOrder
     CapitalRepaid?: SortOrder
     PropertyID?: SortOrder
+  }
+
+  export type CapitalRepaymentsAvgOrderByAggregateInput = {
+    CapitalRepaid?: SortOrder
   }
 
   export type CapitalRepaymentsMaxOrderByAggregateInput = {
@@ -7620,12 +7861,20 @@ export namespace Prisma {
     PropertyID?: SortOrder
   }
 
+  export type CapitalRepaymentsSumOrderByAggregateInput = {
+    CapitalRepaid?: SortOrder
+  }
+
   export type DisallowableExpensesCountOrderByAggregateInput = {
     ID?: SortOrder
     Description?: SortOrder
     Amount?: SortOrder
     PropertyID?: SortOrder
     DateIncurred?: SortOrder
+  }
+
+  export type DisallowableExpensesAvgOrderByAggregateInput = {
+    Amount?: SortOrder
   }
 
   export type DisallowableExpensesMaxOrderByAggregateInput = {
@@ -7644,12 +7893,20 @@ export namespace Prisma {
     DateIncurred?: SortOrder
   }
 
+  export type DisallowableExpensesSumOrderByAggregateInput = {
+    Amount?: SortOrder
+  }
+
   export type AllowableExpensesCountOrderByAggregateInput = {
     id?: SortOrder
     Description?: SortOrder
     Amount?: SortOrder
     PropertyID?: SortOrder
     DateIncurred?: SortOrder
+  }
+
+  export type AllowableExpensesAvgOrderByAggregateInput = {
+    Amount?: SortOrder
   }
 
   export type AllowableExpensesMaxOrderByAggregateInput = {
@@ -7668,8 +7925,20 @@ export namespace Prisma {
     DateIncurred?: SortOrder
   }
 
+  export type AllowableExpensesSumOrderByAggregateInput = {
+    Amount?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7712,6 +7981,33 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
 

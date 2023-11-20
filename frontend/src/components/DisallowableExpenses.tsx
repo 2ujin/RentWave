@@ -44,11 +44,11 @@ function DisallowableExpenses({
     const id = params.id;
 
     const DisAllowableExpense = {
-      disallowableExpenseDescription: e.target.elements.description.value,
-      disallowableExpenseAmount: e.target.elements.amount.value,
-      expenseIncurred: DisAllowableExpenseDate,
+      Description: e.target.elements.description.value,
+      Amount: Number(e.target.elements.amount.value),
+      DateIncurred: DisAllowableExpenseDate,
       PeriodId: itemId,
-      propertyID: id,
+      PropertyID: id,
     };
 
     try {
