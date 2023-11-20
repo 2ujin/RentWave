@@ -7,11 +7,11 @@ import { PrismaClient } from "../../prisma/generated/client";
 
 const prisma = new PrismaClient();
 
-async function addProperty(property: { name: string }) {
+async function addProperty({ PropertyName }: any) {
   try {
     const data = await prisma.propertyListing.create({
       data: {
-        PropertyName: property.name,
+        PropertyName,
       },
     });
     return data;
