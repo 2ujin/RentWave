@@ -57,11 +57,11 @@ function PropertyList() {
           </h1>
           <div className="wrap">
             <div
-              style={{ width: "100px" }}
+              style={{ width: "120px" }}
               className="btn"
               onClick={() => handleDeleteProperty()}
             >
-              Delete
+              Delete all
             </div>
 
             {!showForm && (
