@@ -54,21 +54,21 @@ function Rentals() {
     const startPeriodreverse = reverseDate(StartPeriod);
     const endPeriodreverse = reverseDate(EndPeriod);
 
-    const MonthlyRentals = {
+    const MonthlyRentals: propertyData = {
       StartPeriod: startPeriodreverse,
       EndPeriod: endPeriodreverse,
       PropertyID: params.id,
       Rental: Number(event.target.elements.Rental.value),
     };
 
-    const InterestRepayment = {
+    const InterestRepayment: propertyData = {
       StartPeriod: startPeriodreverse,
       EndPeriod: endPeriodreverse,
       PropertyID: params.id,
       LoanInterest: Number(event.target.elements.LoanInterest.value),
     };
 
-    const CapitalRepayment = {
+    const CapitalRepayment: propertyData = {
       StartPeriod: startPeriodreverse,
       EndPeriod: endPeriodreverse,
       PropertyID: params.id,
@@ -118,9 +118,13 @@ function Rentals() {
   async function fetchMonthlyData() {
     try {
       const id = params.id;
-      const GetMonthlyRentals = await GetMonthlyRents(id);
-      const propertyInterestExpense = await GetMonthlyInterestExpense(id);
-      const getPropertyCapitalrepayment = await GetMonthlyCapitalRepayments(id);
+      const GetMonthlyRentals = await GetMonthlyRents(String(id));
+      const propertyInterestExpense = await GetMonthlyInterestExpense(
+        String(id)
+      );
+      const getPropertyCapitalrepayment = await GetMonthlyCapitalRepayments(
+        String(id)
+      );
 
       SetRentalIncome(GetMonthlyRentals);
       SetRentalExpense(propertyInterestExpense);
@@ -132,7 +136,7 @@ function Rentals() {
 
   async function handleDeleteProperty() {
     const id = params.id;
-    await DeleteProperty(id);
+    await DeleteProperty(String(id));
     navigate("/");
   }
 

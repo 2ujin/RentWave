@@ -2,23 +2,33 @@ export interface newPropertyInfo {
   PropertyName: string;
 }
 
-export interface propertyData {
-  StartPeriod: string;
-  EndPeriod: string;
-  Rental: string;
-  LoanInterest: number;
-  CapitalRepayment: number;
-  InterestPayable?: string;
-  Capitalrepayment?: string;
-  PropertyID?: string;
-  InterestExpense?: number | any;
+export interface AxiosResponse {
+  data: any;
+  status: number;
+  statusText: string;
+  headers: Record<string, string>;
+  error?: any | undefined;
 }
 
 export interface allowableExpensesData {
-  allowableExpenseDescription: string;
-  allowableExpenseAmount: string;
-  propertyID: string;
-  expenseIncurred: string;
+  Description: string;
+  Amount: number;
+  PropertyID: string;
+  PeriodId?: string | any;
+  DateIncurred: string;
+}
+
+export interface propertyData {
+  StartPeriod: string;
+  EndPeriod: string;
+  Rental?: number;
+  LoanInterest?: number;
+  InterestExpense?: number | any;
+  CapitalRepayment?: number;
+  InterestPayable?: string;
+  Capitalrepayment?: string;
+  PropertyID?: string | any;
+  CapitalRepaid?: number | any;
 }
 
 export interface disallowableExpensesData {

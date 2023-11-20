@@ -8,15 +8,15 @@ import Rentals from "./Rentals";
 function Summary() {
   const [propertysummary, setpropertysummary] = useState([]);
   const params = useParams();
-  let id: any = "";
+  let id: string = "";
 
-  async function fetchPropertySummary(id: any) {
+  async function fetchPropertySummary(id: string) {
     const property = await GetPropertysummary(id);
     setpropertysummary(property);
   }
 
   useEffect(() => {
-    id = params.id;
+    id = String(params.id);
     fetchPropertySummary(id);
   }, [params.id]);
 

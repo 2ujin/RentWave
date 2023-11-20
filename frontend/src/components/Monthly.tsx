@@ -10,9 +10,7 @@ function Monthly({
   showDisallowableExpenses,
   SetDisallowableExpenses,
   showRentalIncome,
-  SetRentalIncome,
   showInterestExpense,
-  SetRentalExpense,
   showCapitalRepayment,
   SetCapitalRepayment,
 }: any) {

@@ -4,6 +4,7 @@ import {
   GetMonthlyDisallowableExpenses,
   AddpropertyDisAllowableExpense,
 } from "../api/apiService";
+import { allowableExpensesData } from "../types/types";
 
 function DisallowableExpenses({
   itemId,
@@ -23,7 +24,9 @@ function DisallowableExpenses({
   async function fetchDisllowableExpenses() {
     try {
       const id = params.id;
-      const DBDisallowableExpenses = await GetMonthlyDisallowableExpenses(id);
+      const DBDisallowableExpenses = await GetMonthlyDisallowableExpenses(
+        String(id)
+      );
       SetDisallowableExpenses(DBDisallowableExpenses);
     } catch (error) {
       console.error(error);
@@ -43,12 +46,12 @@ function DisallowableExpenses({
     );
     const id = params.id;
 
-    const DisAllowableExpense = {
+    const DisAllowableExpense: allowableExpensesData = {
       Description: e.target.elements.description.value,
       Amount: Number(e.target.elements.amount.value),
       DateIncurred: DisAllowableExpenseDate,
       PeriodId: itemId,
-      PropertyID: id,
+      PropertyID: String(id),
     };
 
     try {

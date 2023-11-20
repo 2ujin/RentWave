@@ -1,3 +1,9 @@
+import {
+  allowableExpensesData,
+  newPropertyInfo,
+  propertyData,
+} from "../types/types";
+
 const url = "http://localhost:3000";
 
 function GetPropertysummary(id: any) {
@@ -6,9 +12,9 @@ function GetPropertysummary(id: any) {
     .catch((error) => console.error(error));
 }
 
-async function AddpropertyAllowableExpense(expense: any) {
+async function AddpropertyAllowableExpense(expense: allowableExpensesData) {
   try {
-    const ID = expense.propertyID;
+    const ID = expense.PropertyID;
     const data = await fetch(`${url}/summary/${ID}/AddAllowableExpense`, {
       method: "POST",
       headers: {
@@ -28,7 +34,7 @@ async function AddpropertyAllowableExpense(expense: any) {
   }
 }
 
-async function GetMonthlyAllowableExpenses(id: any) {
+async function GetMonthlyAllowableExpenses(id: string) {
   try {
     const response = await fetch(
       `${url}/summary/${id}/GetMonthlyAllowableExpenses`
@@ -39,9 +45,9 @@ async function GetMonthlyAllowableExpenses(id: any) {
   }
 }
 
-async function AddpropertyDisAllowableExpense(expense: any) {
+async function AddpropertyDisAllowableExpense(expense: allowableExpensesData) {
   try {
-    const ID = expense.propertyID;
+    const ID = expense.PropertyID;
     const data = await fetch(`${url}/summary/${ID}/AddDisallowableExpense`, {
       method: "POST",
       headers: {
@@ -60,7 +66,7 @@ async function AddpropertyDisAllowableExpense(expense: any) {
   }
 }
 
-async function GetMonthlyDisallowableExpenses(id: any) {
+async function GetMonthlyDisallowableExpenses(id: string) {
   try {
     const response = await fetch(
       `${url}/summary/${id}/GetMonthlyDisallowableExpenses`
@@ -76,7 +82,7 @@ function GetProperties() {
     .catch((error) => console.error(error));
 }
 
-async function AddNewProperty(property: any) {
+async function AddNewProperty(property: newPropertyInfo) {
   try {
     const data = await fetch(`${url}/addProperty`, {
       method: "Post",
@@ -96,7 +102,7 @@ async function AddNewProperty(property: any) {
   }
 }
 
-async function AddpropertyRents(rentalBreakdown: any) {
+async function AddpropertyRents(rentalBreakdown: propertyData) {
   try {
     const ID = rentalBreakdown.PropertyID;
     const data = await fetch(`${url}/summary/${ID}/RecordRents`, {
@@ -118,7 +124,7 @@ async function AddpropertyRents(rentalBreakdown: any) {
   }
 }
 
-async function MonthlyInterest(interest: any) {
+async function MonthlyInterest(interest: propertyData) {
   try {
     const ID = interest.PropertyID;
     const data = await fetch(`${url}/summary/${ID}/RecordInterestExpense`, {
@@ -140,7 +146,7 @@ async function MonthlyInterest(interest: any) {
   }
 }
 
-async function MonthlyCapital(CapitalRepayment: any) {
+async function MonthlyCapital(CapitalRepayment: propertyData) {
   try {
     const ID = CapitalRepayment.PropertyID;
     const data = await fetch(`${url}/summary/${ID}/RecordCapitalRepayment`, {
@@ -164,7 +170,7 @@ async function MonthlyCapital(CapitalRepayment: any) {
 
 ///gets the capital repayment, interest expense, and rental to the backend
 
-async function GetMonthlyRents(id: any) {
+async function GetMonthlyRents(id: string) {
   try {
     const response = await fetch(`${url}/summary/${id}/GetMonthlyRents`);
     return await response.json();
@@ -173,7 +179,7 @@ async function GetMonthlyRents(id: any) {
   }
 }
 
-async function GetMonthlyCapitalRepayments(id: any) {
+async function GetMonthlyCapitalRepayments(id: string) {
   try {
     const response = await fetch(
       `${url}/summary/${id}/GetMonthlyCapitalRepayments`
@@ -184,7 +190,7 @@ async function GetMonthlyCapitalRepayments(id: any) {
   }
 }
 
-async function GetMonthlyInterestExpense(id: any) {
+async function GetMonthlyInterestExpense(id: string) {
   try {
     const response = await fetch(
       `${url}/summary/${id}/GetMonthlyInterestExpense`
@@ -195,7 +201,7 @@ async function GetMonthlyInterestExpense(id: any) {
   }
 }
 
-async function DeleteProperty(id: any) {
+async function DeleteProperty(id: string) {
   try {
     const data = await fetch(`${url}/deleteProperty/${id}`, {
       method: "DELETE",

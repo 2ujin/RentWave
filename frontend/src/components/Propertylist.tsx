@@ -7,10 +7,11 @@ import {
   AddNewProperty,
   DeleteProperty,
 } from "../api/apiService";
+import { AxiosResponse, newPropertyInfo } from "../types/types";
 const houseImage = require("../assets/3d-electric-car-building.jpg");
 
 function PropertyList() {
-  const [propertyOwned, setPropertyOwned] = useState<any>([]);
+  const [propertyOwned, setPropertyOwned] = useState<newPropertyInfo[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [newProperty, setNewProperty] = useState("");
 
@@ -26,7 +27,7 @@ function PropertyList() {
     fetchproperties();
   }, []);
 
-  async function handleAddProperty(propertyinfo: any) {
+  async function handleAddProperty(propertyinfo: newPropertyInfo) {
     try {
       const response: any = await AddNewProperty(propertyinfo);
       if (response.status === 201) {
@@ -43,7 +44,9 @@ function PropertyList() {
   }
 
   async function handleDeleteProperty() {
-    propertyOwned.map(async (item: any) => await DeleteProperty(item.ID));
+    propertyOwned.map(
+      async (item: any) => await DeleteProperty(String(item.ID))
+    );
     setPropertyOwned([]);
   }
 
